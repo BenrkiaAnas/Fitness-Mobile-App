@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MiniProjet</string>
+    <string-array name="user">
+        <item>1</item>
+        <item>anas</item>
+        <item>ben</item>
+        <item>anas@gmail.com</item>
+        <item>123456</item>
+
+    </string-array>
 </resources>
