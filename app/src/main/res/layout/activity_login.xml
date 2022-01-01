@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".UserInfoActivity">
+    tools:context=".LoginActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="16dp"
-        android:text="Créer Compte"
+        android:text="Se Connecter"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -39,7 +39,7 @@
         android:layout_marginTop="50dp">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etWeight"
+            android:id="@+id/email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -55,55 +55,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="@null"
-                android:hint="Nom"
-                android:inputType="numberSigned"
-                android:maxLength="3"
-                android:paddingStart="10dp"
-                android:paddingBottom="10dp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etWorkTime"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:theme="@style/TextInputLayoutAppearance"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etWeight">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="@null"
-                android:hint="Prenom"
-                android:inputType="numberSigned"
-                android:maxLength="3"
-                android:paddingStart="10dp"
-                android:paddingBottom="10dp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:theme="@style/TextInputLayoutAppearance"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etWorkTime">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="@null"
                 android:hint="Email"
-                android:inputType="numberSigned"
-                android:maxLength="3"
+                android:inputType="textEmailAddress"
                 android:paddingStart="10dp"
                 android:paddingBottom="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -124,48 +77,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="@null"
-                android:hint="Email"
-                android:inputType="numberSigned"
-                android:maxLength="3"
+                android:hint="Mot de Passe"
+                android:inputType="textPassword"
                 android:paddingStart="10dp"
                 android:paddingBottom="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etWakeUpTime"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            android:theme="@style/TextInputLayoutAppearance"
-            app:layout_constraintEnd_toStartOf="@+id/etSleepTime"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etWorkTime">
-
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etSleepTime"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:theme="@style/TextInputLayoutAppearance"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/etWakeUpTime"
-            app:layout_constraintTop_toBottomOf="@+id/etWorkTime">
-
-
-        </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
 
-        android:id="@+id/btnContinue"
+        android:id="@+id/login"
         style="@android:style/Widget.Material.Button.Borderless"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -175,7 +97,7 @@
         android:layout_marginRight="110dp"
         android:layout_marginBottom="200dp"
         android:drawableEnd="@mipmap/cont"
-        android:text="Créer Compte"
+        android:text="Se Connecter"
         android:textColor="@color/white"
         android:textSize="@dimen/text_18" />
 
