@@ -29,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-        final Intent i = new Intent(this,HomeActivity.class);
+        final Intent i = new Intent(this,CompleteProfile.class);
 
 
 
