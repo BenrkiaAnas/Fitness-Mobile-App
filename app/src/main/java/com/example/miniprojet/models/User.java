@@ -5,26 +5,23 @@ import android.os.Parcelable;
 
 public class User implements Parcelable {
 
-    int id;
     String nom;
     String prenom;
     String email;
     String password;
-    int age;
-    float weight;
-    float height;
-    int gender;
+    String age;
+    String weight;
+    String height;
+    String gender;
 
-    public User(int id, String nom, String prenom, String email, String password) {
-        this.id = id;
+    public User( String nom, String prenom, String email, String password) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.password = password;
     }
 
-    public User(int id, String nom, String prenom, String email, String password, int age, float weight, float height, int gender) {
-        this.id = id;
+    public User(String nom, String prenom, String email, String password, String age, String weight, String height, String gender) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -36,15 +33,14 @@ public class User implements Parcelable {
     }
 
     protected User(Parcel in) {
-        id = in.readInt();
         nom = in.readString();
         prenom = in.readString();
         email = in.readString();
         password = in.readString();
-        age = in.readInt();
-        weight = in.readFloat();
-        height = in.readFloat();
-        gender = in.readInt();
+        age = in.readString();
+        weight = in.readString();
+        height = in.readString();
+        gender = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -63,13 +59,7 @@ public class User implements Parcelable {
         return CREATOR;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNom() {
         return nom;
@@ -104,35 +94,35 @@ public class User implements Parcelable {
     }
 
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
-    public float getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 
-    public float getHeight() {
+    public String getHeight() {
         return height;
     }
 
-    public void setHeight(float height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
-    public int getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -143,21 +133,19 @@ public class User implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
         dest.writeString(nom);
         dest.writeString(prenom);
         dest.writeString(email);
         dest.writeString(password);
-        dest.writeInt(age);
-        dest.writeInt(gender);
-        dest.writeFloat(weight);
-        dest.writeFloat(height);
+        dest.writeString(age);
+        dest.writeString(gender);
+        dest.writeString(weight);
+        dest.writeString(height);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", email='" + email + '\'' +

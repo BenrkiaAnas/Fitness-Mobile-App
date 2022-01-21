@@ -10,7 +10,7 @@
         android:id="@+id/page_3"
         android:enabled="true"
         android:icon="@drawable/ic_wallet_bottom"
-        android:title="Nouriture"/>
+        android:title="Repas"/>
     <item
         android:id="@+id/page_4"
         android:enabled="true"
