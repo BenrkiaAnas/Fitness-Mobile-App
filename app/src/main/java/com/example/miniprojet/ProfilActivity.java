@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.miniprojet.adapters.PlanAdapter;
@@ -24,6 +26,11 @@ public class ProfilActivity extends AppCompatActivity {
 
     ArrayList<Setting> listSettings = new ArrayList<>();
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    String Shared_Pref_Name = "CurrentUser";
+    String Session_key = "Session_user";
+
     ListView listview;
 
     @Override
@@ -31,36 +38,41 @@ public class ProfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
 
-        addSettings();
+        LinearLayout linearLayout = findViewById(R.id.linearlayout);
+        LinearLayout linearlayout_logout = findViewById(R.id.linearlayout_logout);
+        LinearLayout linearlayout2 = findViewById(R.id.linearlayout2);
 
-
-
-        SettingAdapter adapter = new SettingAdapter(this,listSettings);
-        // list view
-        listview = findViewById(R.id.listSettings);
-        listview.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-
-        // On Click List View
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Setting currentSetting = (Setting) listview.getItemAtPosition(position);
-                if(currentSetting.getNom_setting() == "Profil")
-                {
-
-                    Intent i = new Intent(ProfilActivity.this,ProfilModifyActivity.class);
-                    startActivity(i);
-
-                }else{
-
-                    Intent i = new Intent(ProfilActivity.this,LoginActivity.class);
-                    startActivity(i);
-
-                }
+            public void onClick(View v) {
+                Intent i = new Intent(ProfilActivity.this,ProfilModifyActivity.class);
+                startActivity(i);
             }
         });
 
+        linearlayout_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sharedPreferences = getSharedPreferences(Shared_Pref_Name,MODE_PRIVATE);
+                editor = sharedPreferences.edit();
+
+                editor.clear();
+                editor.commit();
+
+
+                Intent i = new Intent(ProfilActivity.this,LoginActivity.class);
+                startActivity(i);
+            }
+        });
+
+        linearlayout2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfilActivity.this,InfoActivity.class);
+                startActivity(i);
+            }
+        });
 
         bottomNavigationView = findViewById(R.id.navigation);
         bottomNavigationView.setBackground(null);
@@ -94,14 +106,48 @@ public class ProfilActivity extends AppCompatActivity {
             }
         });
 
+        /*addSettings();
+
+
+
+
+
+        SettingAdapter adapter = new SettingAdapter(this,listSettings);
+        // list view
+        listview = findViewById(R.id.listSettings);
+        listview.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+        // On Click List View
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Setting currentSetting = (Setting) listview.getItemAtPosition(position);
+                if(currentSetting.getNom_setting() == "Profil")
+                {
+
+                    Intent i = new Intent(ProfilActivity.this,ProfilModifyActivity.class);
+                    startActivity(i);
+
+                }else{
+
+                    sharedPreferences = getSharedPreferences(Shared_Pref_Name,MODE_PRIVATE);
+                    editor = sharedPreferences.edit();
+
+                    editor.clear();
+                    editor.commit();
+
+                    Intent i = new Intent(ProfilActivity.this,LoginActivity.class);
+                    startActivity(i);
+
+                }
+            }
+        });
+
+
+        */
+
     }
 
-    public void addSettings()
-    {
 
-        listSettings.add(new Setting("Profil"));
-        listSettings.add(new Setting("Se Déconnecter"));
-
-
-    }
 }

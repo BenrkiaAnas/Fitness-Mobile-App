@@ -121,6 +121,8 @@ public class PlanActivity extends AppCompatActivity {
                 Intent i = new Intent(PlanActivity.this,PlanDetail.class);
                 Plan plan = listPlans.get(position);
                 i.putExtra("plan",plan);
+                i.putExtra("from","plan");
+
                 startActivity(i);
 
             }

@@ -146,4 +146,18 @@
         android:textColor="@color/white"
         android:textSize="@dimen/text_18" />
 
+    <TextView
+        android:id="@+id/signin"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="30dp"
+        android:text="Vous avez déjà un compte? S'identifier"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_18" />
+
+
 </RelativeLayout>

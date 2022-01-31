@@ -7,6 +7,9 @@
 
     <color name="purple_200">#80CBC4</color>
 
+    <color name="dark">#FF222222</color>
+    <color name="light">#FFEEEEEE</color>
+
 
     <color name="gray_color">#808080</color>
 
@@ -77,5 +80,10 @@
         <item>@color/dot_dark_screen</item>
         <item>@color/dot_dark_screen</item>
     </array>
+
+    <color name="yellow">#F8BA0F</color>
+    <color name="goodgrey">#535353</color>
+    <color name="blue">#293859</color>
+    <color name="lightgrey">#EEEEEE</color>
 
 </resources>

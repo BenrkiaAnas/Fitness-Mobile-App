@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.miniprojet.models.User;
@@ -45,6 +46,15 @@ public class LoginActivity extends AppCompatActivity {
 
         Button btn = this.findViewById(R.id.login);
 
+        TextView signup = findViewById(R.id.signup);
+        Intent intent = new Intent(this,RegisterActivity.class);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent);
+            }
+        });
+
 
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -54,57 +64,78 @@ public class LoginActivity extends AppCompatActivity {
                 String passe = password.getEditText().getText().toString();
                 //Toast.makeText(LoginActivity.this,"passlog",Toast.LENGTH_LONG).show();
 
+                email.setError("");
+                email.setErrorEnabled(false);
 
-                sharedPreferences = getSharedPreferences(Shared_Pref_Name,MODE_PRIVATE);
-                editor = sharedPreferences.edit();
 
-                String username = mail.replaceAll("\\p{Punct}", "");
+                password.setError("");
+                password.setErrorEnabled(false);
 
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.hasChild(username))
-                        {
-                            String password_log = snapshot.child(username).child("password").getValue(String.class);
-                            String email_log = snapshot.child(username).child("email").getValue(String.class);
+                if(mail.equals(""))
+                {
+                    email.setError("Email est un champ Requis");
+                }else if(passe.equals(""))
+                {
+                    password.setError("Mot de Passe est un champ Requis");
 
-                            if(mail.equals(email_log) && passe.equals(password_log))
+                }else{
+
+                    sharedPreferences = getSharedPreferences(Shared_Pref_Name,MODE_PRIVATE);
+                    editor = sharedPreferences.edit();
+
+                    String username = mail.replaceAll("\\p{Punct}", "");
+
+                    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.hasChild(username))
                             {
+                                String password_log = snapshot.child(username).child("password").getValue(String.class);
+                                String email_log = snapshot.child(username).child("email").getValue(String.class);
 
-                                //Toast.makeText(LoginActivity.this,mail,Toast.LENGTH_SHORT ).show();
-                                //Toast.makeText(LoginActivity.this,passe,Toast.LENGTH_SHORT ).show();
-                                //Toast.makeText(LoginActivity.this,emailLog,Toast.LENGTH_SHORT ).show();
-                                //Toast.makeText(LoginActivity.this,passlog,Toast.LENGTH_SHORT ).show();
+                                if(mail.equals(email_log) && passe.equals(password_log))
+                                {
 
-
-                                editor.putString(Session_key,username).commit();
-
-                                Intent i = new Intent(LoginActivity.this,HomeActivity.class);
-
-
-                                startActivity(i);
-
-                                Log.i(TAG, "User Exist");
+                                    //Toast.makeText(LoginActivity.this,mail,Toast.LENGTH_SHORT ).show();
+                                    //Toast.makeText(LoginActivity.this,passe,Toast.LENGTH_SHORT ).show();
+                                    //Toast.makeText(LoginActivity.this,emailLog,Toast.LENGTH_SHORT ).show();
+                                    //Toast.makeText(LoginActivity.this,passlog,Toast.LENGTH_SHORT ).show();
 
 
+                                    editor.putString(Session_key,username).commit();
 
+                                    Intent i = new Intent(LoginActivity.this,HomeActivity.class);
+
+
+                                    startActivity(i);
+
+                                    Log.i(TAG, "User Exist");
+
+
+
+
+                                }else{
+
+                                    Log.i(TAG, "User Is Not Exist");
+
+
+                                }
 
                             }else{
-
-                                Log.i(TAG, "User Is Not Exist");
-
-                                Toast.makeText(LoginActivity.this,"Erreur enter a new pass",Toast.LENGTH_LONG).show();
-
+                                email.setError("Email ou Mot de Passe est Incorrect");
                             }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
                         }
-                    }
+                    });
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                }
 
-                    }
-                });
+
+
 
 
 

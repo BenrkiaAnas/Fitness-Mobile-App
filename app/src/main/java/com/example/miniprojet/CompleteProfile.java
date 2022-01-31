@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -41,6 +42,11 @@ public class CompleteProfile extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser mUser;
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    String Shared_Pref_Name = "CurrentUser";
+    String Session_key = "Session_user";
+
     private static final String TAG = "CompleteProfile";
 
 
@@ -60,9 +66,7 @@ public class CompleteProfile extends AppCompatActivity {
         Bundle params = getIntent().getExtras();
         User user = params.getParcelable("user");
 
-        Toast.makeText(CompleteProfile.this,"Hello",Toast.LENGTH_SHORT ).show();
 
-        Toast.makeText(CompleteProfile.this,user.toString(),Toast.LENGTH_SHORT ).show();
 
         mAuth = FirebaseAuth.getInstance();
         mUser= mAuth.getCurrentUser();
@@ -76,10 +80,15 @@ public class CompleteProfile extends AppCompatActivity {
         Button completeProfile = (Button) this.findViewById(R.id.button);
 
         completeProfile.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
                 //Toast.makeText(CompleteProfile.this,"Hello",Toast.LENGTH_SHORT ).show();
 
+
+                sharedPreferences = getSharedPreferences(Shared_Pref_Name,MODE_PRIVATE);
+                editor = sharedPreferences.edit();
 
                 int checked = radioGroup.getCheckedRadioButtonId();
                 String gender = "0";
@@ -103,52 +112,75 @@ public class CompleteProfile extends AppCompatActivity {
                 String height_personne = hight.getText().toString();
                 String age_personne = age.getText().toString();
 
-                final User currentUser = new User(user.getNom(),user.getPrenom(),user.getEmail(),user.getPassword(),age_personne,weight_personne,height_personne,gender);
+                weight.setError("");
 
-                Log.i(TAG, "Hello "+currentUser.toString());
+                hight.setError("");
 
-                String user_email = user.getEmail();
+                age.setError("");
 
-                String username = user_email.replaceAll("\\p{Punct}", "");
+                if(weight_personne.equals(""))
+                {
+                    weight.setError("Poids est un champ Requis");
+
+                }else if(height_personne.equals(""))
+                {
+                    hight.setError("Taille est un champ Requis");
+                }else if(age_personne.equals(""))
+                {
+                    age.setError("Age est un champ Requis");
+
+                }else{
+
+                    final User currentUser = new User(user.getNom(),user.getPrenom(),user.getEmail(),user.getPassword(),age_personne,weight_personne,height_personne,gender);
+
+                    Log.i(TAG, "Hello "+currentUser.toString());
+
+                    String user_email = user.getEmail();
+
+                    String username = user_email.replaceAll("\\p{Punct}", "");
 
 
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.hasChild(username))
-                        {
-                            Toast.makeText(CompleteProfile.this,"User Already Existe",Toast.LENGTH_SHORT ).show();
-                        }else{
+                    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.hasChild(username))
+                            {
+                                Toast.makeText(CompleteProfile.this,"User Already Existe",Toast.LENGTH_SHORT ).show();
+                            }else{
 
 
 
 
-                            myRef.child(username).child("firstname").setValue(currentUser.getNom());
-                            myRef.child(username).child("lastname").setValue(currentUser.getPrenom());
-                            myRef.child(username).child("email").setValue(currentUser.getEmail());
-                            myRef.child(username).child("password").setValue(currentUser.getPassword());
-                            myRef.child(username).child("weight").setValue(currentUser.getWeight());
-                            myRef.child(username).child("height").setValue(currentUser.getHeight());
-                            myRef.child(username).child("age").setValue(currentUser.getAge());
-                            myRef.child(username).child("gender").setValue(currentUser.getGender());
+                                myRef.child(username).child("firstname").setValue(currentUser.getNom());
+                                myRef.child(username).child("lastname").setValue(currentUser.getPrenom());
+                                myRef.child(username).child("email").setValue(currentUser.getEmail());
+                                myRef.child(username).child("password").setValue(currentUser.getPassword());
+                                myRef.child(username).child("weight").setValue(currentUser.getWeight());
+                                myRef.child(username).child("height").setValue(currentUser.getHeight());
+                                myRef.child(username).child("age").setValue(currentUser.getAge());
+                                myRef.child(username).child("gender").setValue(currentUser.getGender());
 
+                                editor.putString(Session_key,username).commit();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
                         }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                    });
 
 
 
 
-                //Toast.makeText(CompleteProfile.this,currentUser.toString(),Toast.LENGTH_SHORT ).show();
+                    //Toast.makeText(CompleteProfile.this,currentUser.toString(),Toast.LENGTH_SHORT ).show();
 
-                i.putExtra("currentUser",currentUser);
-                startActivity(i);
+                    i.putExtra("currentUser",currentUser);
+                    startActivity(i);
+
+                }
+
+
             }
         });
     }

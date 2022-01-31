@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -60,9 +61,9 @@ public class ProfilModifyActivity extends AppCompatActivity {
         EditText nom = findViewById(R.id.editTextTextPersonName);
         EditText prenom = findViewById(R.id.editTextTextPersonName2);
         EditText email = findViewById(R.id.editTextTextPersonName3);
-        EditText poids = findViewById(R.id.editTextTextPersonName4);
-        EditText taille = findViewById(R.id.editTextTextPersonName5);
-        EditText age = findViewById(R.id.editTextTextPersonName6);
+        //EditText poids = findViewById(R.id.editTextTextPersonName4);
+        //EditText taille = findViewById(R.id.editTextTextPersonName5);
+        //EditText age = findViewById(R.id.editTextTextPersonName6);
         EditText password = findViewById(R.id.editTextTextPassword);
 
 
@@ -70,6 +71,20 @@ public class ProfilModifyActivity extends AppCompatActivity {
         RadioButton female = findViewById(R.id.gender_male);
 
         Button modify = findViewById(R.id.button7);
+        ImageView back = findViewById(R.id.imageView7);
+
+        Intent back_profil = new Intent(this,ProfilActivity.class);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                    startActivity(back_profil);
+
+
+            }
+        });
 
 
 
@@ -82,17 +97,17 @@ public class ProfilModifyActivity extends AppCompatActivity {
                     nom.setText(snapshot.child(username).child("firstname").getValue(String.class));
                     prenom.setText(snapshot.child(username).child("lastname").getValue(String.class));
                     email.setText(snapshot.child(username).child("email").getValue(String.class));
-                    poids.setText(snapshot.child(username).child("weight").getValue(String.class));
-                    taille.setText(snapshot.child(username).child("height").getValue(String.class));
-                    age.setText(snapshot.child(username).child("age").getValue(String.class));
-                    if(snapshot.child(username).child("age").getValue(String.class).equals("0"))
+                    //poids.setText(snapshot.child(username).child("weight").getValue(String.class));
+                    //taille.setText(snapshot.child(username).child("height").getValue(String.class));
+                    //age.setText(snapshot.child(username).child("age").getValue(String.class));
+                    /*if(snapshot.child(username).child("age").getValue(String.class).equals("0"))
                     {
                         male.setChecked(true);
                         female.setChecked(false);
                     }else{
                         female.setChecked(true);
                         male.setChecked(true);
-                    }
+                    }*/
                 }
             }
 
@@ -111,7 +126,7 @@ public class ProfilModifyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                int checked = radioGroup.getCheckedRadioButtonId();
+                /*int checked = radioGroup.getCheckedRadioButtonId();
                 String gender = "0";
 
 
@@ -123,24 +138,31 @@ public class ProfilModifyActivity extends AppCompatActivity {
                     gender = "0";
                 } else if ("Femme".equals(text)) {
                     gender = "1";
-                }
+                }*/
 
 
                 String name_edit = nom.getText().toString();
                 String lastname_edit = prenom.getText().toString();
                 String email_edit = email.getText().toString();
-                String age_edit = age.getText().toString();
-                String weight_edit = poids.getText().toString();
-                String height_edit = taille.getText().toString();
+                //String age_edit = age.getText().toString();
+                //String weight_edit = poids.getText().toString();
+                //String height_edit = taille.getText().toString();
                 String pass_edit = password.getText().toString();
 
-                User user = new User(name_edit,lastname_edit,email_edit,pass_edit,age_edit,weight_edit,height_edit,gender);
+                User user = new User(name_edit,lastname_edit,email_edit,pass_edit,"","","","");
 
                 myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                        String weight = snapshot.child(username).child("weight").getValue().toString();
+                        String height = snapshot.child(username).child("height").getValue().toString();
+                        String age = snapshot.child(username).child("weight").getValue().toString();
+                        String gender = snapshot.child(username).child("gender").getValue().toString();
+
                         snapshot.child(username).getRef().removeValue();
+
+
 
 
 
@@ -152,10 +174,10 @@ public class ProfilModifyActivity extends AppCompatActivity {
                         myRef.child(username_new).child("lastname").setValue(user.getPrenom());
                         myRef.child(username_new).child("email").setValue(user.getEmail());
                         myRef.child(username_new).child("password").setValue(user.getPassword());
-                        myRef.child(username_new).child("weight").setValue(user.getWeight());
-                        myRef.child(username_new).child("height").setValue(user.getHeight());
-                        myRef.child(username_new).child("age").setValue(user.getAge());
-                        myRef.child(username_new).child("gender").setValue(user.getGender());
+                        myRef.child(username_new).child("weight").setValue(weight);
+                        myRef.child(username_new).child("height").setValue(height);
+                        myRef.child(username_new).child("age").setValue(age);
+                        myRef.child(username_new).child("gender").setValue(gender);
 
                         startActivity(i);
 

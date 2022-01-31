@@ -3,8 +3,11 @@ package com.example.miniprojet;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,6 +27,7 @@ import java.util.ArrayList;
 public class ExerciceActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
+
 
     ArrayList<Exercice> listExercice = new ArrayList<>();
 
@@ -50,10 +54,13 @@ public class ExerciceActivity extends AppCompatActivity {
 
 
 
+
         TextView name_plan = findViewById(R.id.textView33);
         TextView sessions_workout = findViewById(R.id.textView35);
         ImageView image_plan = findViewById(R.id.imageView4);
         TextView desc = findViewById(R.id.textView34);
+        ImageView back = findViewById(R.id.imageView7);
+
 
 
 
@@ -119,6 +126,39 @@ public class ExerciceActivity extends AppCompatActivity {
         int id = getResources().getIdentifier(plan.getImg(), "drawable", getPackageName());
 
         image_plan.setImageResource(id);
+
+        bottomNavigationView = findViewById(R.id.navigation);
+        bottomNavigationView.setBackground(null);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+
+                    case R.id.page_3:{
+                        Intent i = new Intent(ExerciceActivity.this,MealActivity.class);
+                        startActivity(i);
+
+                        return false;
+                    }
+
+                    case R.id.page_1:{
+                        Intent i = new Intent(ExerciceActivity.this,HomeActivity.class);
+                        startActivity(i);
+
+                        return false;
+                    }
+                    case R.id.page_5:{
+                        Intent i = new Intent(ExerciceActivity.this,ProfilActivity.class);
+                        startActivity(i);
+
+                        return false;
+                    }
+
+                }
+                return false;
+            }
+        });
+
 
 
 

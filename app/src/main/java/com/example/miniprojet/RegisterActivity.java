@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.miniprojet.models.User;
@@ -47,6 +48,15 @@ public class RegisterActivity extends AppCompatActivity {
         TextInputLayout email = this.findViewById(R.id.email);
         TextInputLayout password = this.findViewById(R.id.password);
 
+        TextView signin = findViewById(R.id.signin);
+        Intent intent = new Intent(this,LoginActivity.class);
+        signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent);
+            }
+        });
+
         mAuth = FirebaseAuth.getInstance();
         mUser= mAuth.getCurrentUser();
 
@@ -60,23 +70,56 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
+
+
                 String nom = firstname.getEditText().getText().toString();
                 String prenom = lastname.getEditText().getText().toString();
                 String mail = email.getEditText().getText().toString();
                 String passe = password.getEditText().getText().toString();
 
+                firstname.setError("");
+                firstname.setErrorEnabled(false);
+
+                lastname.setError("");
+                lastname.setErrorEnabled(false);
+
+                email.setError("");
+                email.setErrorEnabled(false);
+
+                password.setError("");
+                password.setErrorEnabled(false);
 
 
-                User user = new User(nom,prenom,mail,passe,"","","","");
+                if(nom.equals(""))
+                {
+                    firstname.setError("Nom est un champ Requis");
+                }else if(prenom.equals(""))
+                {
+                    lastname.setError("Prenom est un champ Requis");
+                }else if(mail.equals(""))
+                {
+
+                    email.setError("Email est un champ Requis");
+                }else if(passe.equals(""))
+                {
+                    password.setError("Mot de Passe est un champ Requis");
+                }else{
+
+                    User user = new User(nom,prenom,mail,passe,"","","","");
 
 
-                Toast.makeText(RegisterActivity.this,"Hello",Toast.LENGTH_LONG).show();
 
 
-                Log.i(TAG, "Hello "+user.toString());
+                    Log.i(TAG, "Hello "+user.toString());
 
-                i.putExtra("user",user);
-                startActivity(i);
+                    i.putExtra("user",user);
+                    startActivity(i);
+
+                }
+
+
+
+
 
 
 

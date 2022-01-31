@@ -125,6 +125,7 @@ public class MealActivity extends AppCompatActivity {
                 Intent i = new Intent(MealActivity.this,MealDetail.class);
                 Meal meal = listMeals.get(position);
                 i.putExtra("meal",meal);
+                i.putExtra("from","meal");
                 startActivity(i);
             }
         });

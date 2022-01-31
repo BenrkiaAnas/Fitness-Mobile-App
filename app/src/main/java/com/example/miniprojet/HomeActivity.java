@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -43,7 +45,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toast.makeText(HomeActivity.this,"helloo user",Toast.LENGTH_LONG).show();
 
 
 
@@ -76,6 +77,21 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(HomeActivity.this,PlanDetail.class);
+                Plan plan = listPlans.get(position);
+                i.putExtra("plan",plan);
+                i.putExtra("from","home");
+                startActivity(i);
+
+            }
+        });
+
+
+
 
 
 
@@ -114,6 +130,17 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        listviewMeals.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(HomeActivity.this,MealDetail.class);
+                Meal meal = listMeals.get(position);
+                i.putExtra("meal",meal);
+                i.putExtra("from","home");
+                startActivity(i);
             }
         });
 

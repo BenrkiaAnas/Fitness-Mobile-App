@@ -101,4 +101,18 @@
         android:textColor="@color/white"
         android:textSize="@dimen/text_18" />
 
+
+    <TextView
+        android:id="@+id/signup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="90dp"
+        android:gravity="center"
+        android:text="Vous n'avez pas de compte ? Créer un compte "
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_18" />
+
 </RelativeLayout>
