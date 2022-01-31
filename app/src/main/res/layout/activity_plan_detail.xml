@@ -35,7 +35,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="@drawable/title_background2"
+        android:padding="15dp"
         android:text="Titre du Plan"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="25sp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.102"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +51,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Description Du Plan"
+        android:letterSpacing="0.2"
+        android:padding="5dp"
+        android:text="Description Du Plan :"
+        android:textColor="@color/colorPrimaryDark"
+
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -56,7 +66,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
+        android:padding="5dp"
         android:text="Durée"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -65,18 +77,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
+        android:padding="5dp"
         android:text="Temps Par Semaine"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="150dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/title_background"
         android:text="Tout Les Jours"
-        app:layout_constraintStart_toStartOf="@+id/textView22"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
@@ -84,7 +102,11 @@
         android:layout_width="150dp"
         android:layout_height="18dp"
         android:layout_marginTop="28dp"
+        android:background="@drawable/title_background"
         android:text="11 jour"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -93,23 +115,25 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="20dp"
-        android:text="Difficulter"
+        android:text="Difficulté"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_width="144dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="32dp"
         android:text="Facile"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.358"
+        android:background="@drawable/title_background"
+        android:textColor="@color/white"
+        android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <Button
         android:id="@+id/button2"

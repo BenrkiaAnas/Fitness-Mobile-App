@@ -54,12 +54,15 @@
 
                 <TextView
                     android:id="@+id/titre"
+                    android:paddingLeft="10dp"
+                    android:background="@color/colorPrimary"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:letterSpacing="0.1"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="30dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:text="Nom du Plan"
                     android:textStyle="bold" />
 
@@ -67,6 +70,8 @@
                     android:id="@+id/desc"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:paddingLeft="10dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="30dp"

@@ -43,29 +43,41 @@
 
     <TextView
         android:id="@+id/textView33"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_margin="20dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:textSize="15dp"
+        android:paddingLeft="15dp"
         android:layout_marginTop="24dp"
+        android:textColor="@color/colorPrimaryDark"
+
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <TextView
         android:id="@+id/textView34"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:textSize="15dp"
+        android:paddingLeft="15dp"
+        android:layout_margin="20dp"
+        android:textColor="@color/colorPrimaryDark"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/textView33"
         app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
     <TextView
         android:id="@+id/textView35"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:layout_margin="20dp"
+        android:paddingLeft="15dp"
         android:text="TextView"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/listexercice"
         app:layout_constraintStart_toStartOf="@+id/textView34"
         app:layout_constraintTop_toBottomOf="@+id/textView34"

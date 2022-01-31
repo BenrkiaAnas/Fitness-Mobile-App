@@ -38,10 +38,12 @@
                     android:id="@+id/imageView2"
                     android:layout_width="112dp"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/titre"
-                    android:layout_marginStart = "10dp"
-
+                    android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp"
+
+                    android:layout_toRightOf="@id/titre"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
@@ -51,8 +53,11 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="30dp"
+                    android:letterSpacing="0.1"
                     android:text="Nom du Plan"
-                    android:textColor="@color/black"
+                    android:padding="7dp"
+                    android:textColor="@color/colorPrimaryDark"
+
 
                     android:textStyle="bold" />
 
@@ -62,10 +67,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@id/titre"
                     android:layout_marginLeft="15dp"
+                    android:padding="5dp"
+
                     android:layout_marginTop="25dp"
                     android:layout_marginRight="30dp"
                     android:text="14:00"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/colorPrimary" />
 
 
             </RelativeLayout>

@@ -11,13 +11,15 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="167dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/textedit_bg"
         android:ems="10"
         android:hint="Poids"
         android:inputType="textPersonName"
+        android:paddingLeft="15dp"
         android:text=""
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName5"
         app:layout_constraintTop_toBottomOf="@+id/imageView7" />
@@ -26,56 +28,69 @@
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="80dp"
+        android:background="@drawable/title_background"
+        android:padding="7dp"
         android:text="Poids"
-        app:layout_constraintStart_toStartOf="@+id/textView20"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <EditText
         android:id="@+id/editTextTextPersonName5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_width="165dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="52dp"
+        android:background="@drawable/textedit_bg"
         android:ems="10"
         android:hint="Taille"
         android:inputType="textPersonName"
+        android:paddingLeft="15dp"
         android:text=""
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName6"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+
 
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/title_background"
+        android:padding="7dp"
         android:text="Taille"
-        app:layout_constraintStart_toStartOf="@+id/textView21"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
     <EditText
         android:id="@+id/editTextTextPersonName6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_width="172dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/textedit_bg"
         android:ems="10"
         android:hint="Age"
         android:inputType="textPersonName"
+        android:paddingLeft="15dp"
         android:text=""
         app:layout_constraintStart_toStartOf="@+id/radioGroup"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
-
 
     <TextView
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/title_background"
+        android:padding="7dp"
         android:text="Age"
         app:layout_constraintEnd_toStartOf="@+id/radioGroup"
-        app:layout_constraintHorizontal_bias="0.287"
+        app:layout_constraintHorizontal_bias="0.317"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
@@ -84,7 +99,7 @@
         android:layout_width="210dp"
         android:layout_height="115dp"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="48dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toEndOf="@+id/textView21"
         app:layout_constraintStart_toStartOf="@+id/button7"
@@ -122,10 +137,10 @@
         android:text="Modifier"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.278"
+        app:layout_constraintHorizontal_bias="0.301"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:layout_constraintVertical_bias="0.616" />
+        app:layout_constraintVertical_bias="0.469" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -144,9 +159,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="52dp"
         android:text="Genre"
+        android:background="@drawable/title_background"
+        android:padding="7dp"
         app:layout_constraintBottom_toTopOf="@+id/button7"
         app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+        app:layout_constraintHorizontal_bias="0.746"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView21"
-        app:layout_constraintVertical_bias="0.29" />
+        app:layout_constraintVertical_bias="0.454" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

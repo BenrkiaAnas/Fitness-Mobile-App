@@ -39,5 +39,5 @@
         android:layout_height="195dp"
         android:layout_marginBottom="268dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="32dp" />
+        tools:layout_editor_absoluteX="32dp" ></ListView>
 </androidx.constraintlayout.widget.ConstraintLayout>
